@@ -22,6 +22,9 @@ run: $(NAME)
 check: $(NAME)
 	make; make clean
 
+test: $(NAME)
+	./$(NAME) test
+
 # compress into tarball
 archive: $(NAME)
 	make clean
@@ -33,5 +36,6 @@ clean:
 
 .PHONY: run
 .PHONY: check
+.PHONY: test
 .PHONY: archive
 .PHONY: clean

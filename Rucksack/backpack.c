@@ -13,6 +13,14 @@ int* backPacker(int amount, int* selected, int* weights, int* values, int remain
         // check if new object is not to big
         selected[objIndex] = 0; // We don't want this anymore
         return selected;
+    } else if (weights[objIndex] == 0) {
+        // always good
+        selected[objIndex] = 1;
+        return backPacker(amount, selected, weights, values, remainingCapacity, objIndex + 1, beststate, bestvalue);
+    } else if (values[objIndex] == 0) {
+        // always bad
+        selected[objIndex] = 0;
+        return backPacker(amount, selected, weights, values, remainingCapacity, objIndex + 1, beststate, bestvalue);
     }
 
 
@@ -30,48 +38,36 @@ int* backPacker(int amount, int* selected, int* weights, int* values, int remain
     }
 
     // STATE B: leave package
-    int* withoutPkg = arraycopy(selected, amount);
+    int* withoutPkg = selected;
     withoutPkg[objIndex] = 0;
     withoutPkg = backPacker(amount, withoutPkg, weights, values, remainingCapacity, objIndex + 1, beststate, bestvalue);
 
     int valueWithout = getValue(withoutPkg, values, amount);
     if (valueWithout > bestvalue) {
+        bestvalue = valueWithout;
         beststate = withoutPkg;
     }
 
- 
-    // return best/current state
     return beststate;
 }
 
-int* greedyPacker(int amount, int* packed, int* weights, int* values, int capacity) {
-    int weight = -1;
+int* greedyPacker(int amount, int* weights, int capacity) {
+    
+    int* packed = calloc(amount, sizeof(int));
 
-    // go through objects
     for (int i = 0; i < amount; ++i) {
-        
-        // check if object has value and isn't already packed
-        if (values[i] && !packed[i]) {
-
-            // now check if capacity is enough
-            if (weights[i] <= capacity) {
-                weight = weights[i];
-                packed[i] = 1;
-
-                // we found an object, no need to continue
-                break;
-            }
+        if (weights[i] > capacity) {
+            packed[i] = 0;
+        } else {
+            packed[i] = 1;
+            capacity -= weights[i];
+        }
+        if (capacity <= 0) {
+            // no capacity left
+            break;
         }
     }
-
-    // if no object matches the requirements, we return the solution, else we continue packing
-    if (weight == -1) {
-        return packed;
-    } else {
-
-        // recursive call to greedyPacker
-        return greedyPacker(amount, packed, weights, values, capacity - weight);
-    }
+    return packed;
 }
 
 int* arraycopy(int* array, int length) {

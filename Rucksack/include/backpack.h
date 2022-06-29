@@ -22,7 +22,7 @@ int* backPacker(int amount, int* selected, int* weights, int* values, int remain
 // weights: int*    the weights of all objects
 // values: int*     the values of all ojects
 // capacity: int    the remaining capacity
-int* greedyPacker(int amount, int* packed, int* weights, int* values, int capacity);
+int* greedyPacker(int amount, int* weights, int capacity);
 
 
 // utils
