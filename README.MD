@@ -22,15 +22,18 @@ Die Programme können mit make und dem gcc gebaut werden. Jedes Programm hat ein
 |archive|erstellt ein Archiv aus dem aktuellen Verzeichnis|
 |clean|löscht alle Objektdateien und das Programm|
 
-## Beschreibung der Algorithmen
-### backPacking: Rucksack wird mittels Backtracking gepackt
+# Laufzeitabschätzung
+
+
+# Beschreibung der Algorithmen
+## backPacking: Rucksack wird mittels Backtracking gepackt
 Der Algorithmus iteriert rekursiv über alle möglichen Optionen.
 Dabei wird für jedes Objekt in einer Reihe sowohl die Option _ist enthalten_, als auch die Option _ist nicht enthalten_ und alle resultierenden Zustände einmal geprüft. Immer, wenn ein Zustand besser als der aktuell beste Zustand ist, wird dieser der beste Zustand.
 
 Wenn alle Optionen getestet wurden, wird der beste Zustand zurückgegeben.
 
-### greedyPacker: Rucksack wird einfach schnell bepackt
+## greedyPacker: Rucksack wird einfach schnell bepackt
 Der Algorithmus iteriert über die Objekte. Das jeweils erste Objekt, dass von der Kapazität passt, wird eingefügt. Nun wird solange weiter rekursiv das jeweils erste Objekt eingefügt, bis keines mehr passt. Anschließend werden diese Objekte zurückgegeben.
 
-### String-Umkehrer
+## String-Umkehrer
 Der Algorithmus tauscht den Character am gegebenen Index mit dem Charakter im gleichen Index von rechts aus. Anschließend wird rekursiv der nächsthöhere Index getauscht, bis der Index höher als der rechtsseitige _Gegenindex_ ist.
