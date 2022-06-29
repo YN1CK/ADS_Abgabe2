@@ -36,8 +36,8 @@ int main(int argc, char** argv) {
         }
         printf("Die benutzte Kapazität beträgt >%d< Einheiten\n", getWeight(solutiongreedy, gewichte, NOBJS));
     } else if (argc >= 2) {
-        // currently only one command line option
-    	// testbacktracking();
+        
+    	testbacktracking();
         testgreedy();
     }
     return EXIT_SUCCESS;
