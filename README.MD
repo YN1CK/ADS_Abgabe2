@@ -37,12 +37,13 @@ In dieser Konstellation müssen wirklich alle Optionen getestet werden, da keine
 ### Worst-Case greedyPacker (Greedy - Algorithmus)
 Der Worst-Case für den greedy-Algorithmus besteht aus möglichst geringen Gewichten, sodass alle Elemente geprüft werden müssen, ohne das die Abbruchbedingung greift.
 
+### Gemeinsamer Worst-Case
+Für beide Algorithmen gilt, wenn alle Objekte ein gleiches und möglichst niedriges Gewicht (1) haben, benötigen beide Algorithmen so lange wie *maximal* nötig.
 
 ## Aufstellung Worst-Case ReverseString
 Die Funktion reverseString ist im Worst-Case eine Iteration länger als im Best-Case.
 
-## Rekurenzen
-
+## Komplexität
 
 # Beschreibung der Algorithmen
 ## backPacking: Rucksack wird mittels Backtracking gepackt
